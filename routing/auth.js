@@ -9,9 +9,6 @@ const User = require('../models/userSchema')
 const authentication = require('../middleware/authentication')
 
 
-router.get('/',(req,res)=>{
-    res.send("hello lalla")
-})
 
 router.post('/register', async (req, res)=>{
     console.log(req.body);
@@ -49,9 +46,7 @@ router.post('/register', async (req, res)=>{
     // res.send('running')
 })
 
-router.get('/login', (req, res)=>{
-    res.send("login page");
-})
+
 router.post('/login', async (req, res)=>{
 
     const {email, password} = req.body;
