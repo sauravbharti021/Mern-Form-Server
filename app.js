@@ -16,7 +16,14 @@ require('./db/connection')
 
 const port= process.env.PORT || 5000
 const User = require('./models/userSchema')
-app.use(express.static(path.join(__dirname, 'client/build/index.html')));
+app.use(express.static(path.join(__dirname, 'Client/build')));
+
+// Add other middleware and routes for your backend API
+
+// If no API route matches, serve the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'Client/build/index.html'));
+});
 
 app.use(express.json())
 app.use(require('./routing/auth'))
