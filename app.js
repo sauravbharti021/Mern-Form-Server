@@ -42,7 +42,7 @@ app.use(require('./routing/auth'))
 // })
 
 if(process.env.NODE_ENV==="production"){
-    app.use(express.static("clien/build/index.html"))
+    app.use(express.static("client/build/index.html"))
 }
 
 app.listen(port, ()=>{
