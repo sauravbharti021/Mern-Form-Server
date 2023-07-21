@@ -19,7 +19,7 @@ const User = require('./models/userSchema')
 app.use(express.json())
 app.use(require('./routing/auth'))
 
-
+app.use(express.static(path.join(__dirname, 'client/build/index.html')));
 
 // function middleware(req, res, next){
 //     next()
@@ -41,9 +41,9 @@ app.use(require('./routing/auth'))
 //     res.sendFile(__dirname + "/home.html")
 // })
 
-if(process.env.NODE_ENV==="production"){
-    app.use(express.static("client/build/index.html"))
-}
+// if(process.env.NODE_ENV==="production"){
+//     app.use(express.static("client/build/index.html"))
+// }
 
 app.listen(port, ()=>{
     console.log(`Server is running at port ${port}`)
