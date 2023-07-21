@@ -16,11 +16,11 @@ require('./db/connection')
 
 const port= process.env.PORT || 5000
 const User = require('./models/userSchema')
+app.use(express.static(path.join(__dirname, 'client/build/index.html')));
 
 app.use(express.json())
 app.use(require('./routing/auth'))
 
-app.use(express.static(path.join(__dirname, 'client/build/index.html')));
 
 // function middleware(req, res, next){
 //     next()
