@@ -2,7 +2,7 @@ const express = require('express')
 const jwt= require('jsonwebtoken')
 const router = express.Router()
 const bcrypt = require('bcrypt')
-
+const BASE_URL = process.env.BASE_URL
 
 require('../db/connection')
 const User = require('../models/userSchema')
@@ -113,6 +113,7 @@ router.get('/about', authentication, (req, res)=>{
     res.send(req.currentUser)
 })
 router.get('/home', authentication,(req, res)=>{
+    console.log("idhr")
     res.send(req.currentUser)
 })
 

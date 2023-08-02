@@ -1,13 +1,14 @@
 const dotenv = require('dotenv')
 
 const express= require('express')
+const cors= require('cors')
 
 const app= express()
 const path= require('path')
 
+app.use(cors())
 const cookieParser= require('cookie-parser')
 app.use(cookieParser())
-
 
 
 
@@ -16,42 +17,12 @@ require('./db/connection')
 
 const port= process.env.PORT || 5000
 const User = require('./models/userSchema')
-app.use(express.static(path.join(__dirname, 'client/build')));
 
-// Add other middleware and routes for your backend API
-
-// If no API route matches, serve the React app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build/index.html'));
-});
 
 app.use(express.json())
 app.use(require('./routing/auth'))
 
 
-// function middleware(req, res, next){
-//     next()
-// }
-// app.get('/about', middleware, (req,res)=>{
-//     res.send('Nothing to know about me')
-// })
-
-// app.get('/contact', (req,res)=>{
-//     res.send('contacts')
-// })
-// app.get('/signin',(req, res)=>{
-//     res.send('signin')
-// })
-// app.get('/register',(req, res)=>{
-//     res.send('register kro lo yaar')
-// })
-// app.get('/home',(req, res)=>{
-//     res.sendFile(__dirname + "/home.html")
-// })
-
-// if(process.env.NODE_ENV==="production"){
-//     app.use(express.static("client/build/index.html"))
-// }
 
 app.listen(port, ()=>{
     console.log(`Server is running at port ${port}`)
